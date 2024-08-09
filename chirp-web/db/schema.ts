@@ -5,4 +5,5 @@ export const sites = pgTable("sites", {
   name: text("name"),
   url: text("url"),
   description: text("description"),
+  userId: text("user_id"),
 });

@@ -1,43 +1,17 @@
+import { PlusIcon } from "lucide-react";
+
+import { db } from "@/db/index";
+import { sites } from "@/db/schema";
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
   DialogDescription,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-
-import { PlusIcon } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { db } from "@/db/index";
-import { sites } from "@/db/schema";
-
-const NewSiteForm = () => {
-  return (
-    <form className="space-y-3">
-      <fieldset className="space-y-1">
-        <Label htmlFor="site-name">Name</Label>
-        <Input id="site-name" placeholder="Site Name" />
-      </fieldset>
-      <fieldset className="space-y-1">
-        <Label htmlFor="site-url">Website URL</Label>
-        <Input id="site-url" placeholder="https://example.com" />
-      </fieldset>
-      <fieldset className="space-y-1">
-        <Label htmlFor="site-description">Description</Label>
-        <Textarea
-          id="site-description"
-          className="min-h-[100px] resize-none"
-          placeholder="Description (optional)"
-        />
-      </fieldset>
-    </form>
-  );
-};
+import NewSiteForm from "@/components/new-site-form";
 
 export default async function Page() {
   const allSites = await db.select().from(sites);
@@ -60,9 +34,6 @@ export default async function Page() {
             </DialogDescription>
           </DialogHeader>
           <NewSiteForm />
-          <DialogFooter>
-            <Button type="submit">Create Site</Button>
-          </DialogFooter>
         </DialogContent>
       </Dialog>
     </div>
