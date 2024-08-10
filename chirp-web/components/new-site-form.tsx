@@ -34,7 +34,6 @@ export default function NewSiteForm() {
     if (state.message) {
       toast({
         variant: "destructive",
-        title: "Uh oh! Something went wrong.",
         description: state.message,
       });
     }
@@ -44,7 +43,12 @@ export default function NewSiteForm() {
     <form className="space-y-3" action={formAction}>
       <fieldset className="space-y-1">
         <Label htmlFor="site-name">Name</Label>
-        <Input id="site-name" name="site-name" placeholder="Site Name" />
+        <Input
+          id="site-name"
+          name="site-name"
+          placeholder="Site Name"
+          required
+        />
       </fieldset>
       <fieldset className="space-y-1">
         <Label htmlFor="site-url">Website URL</Label>
@@ -52,6 +56,7 @@ export default function NewSiteForm() {
           id="site-url"
           name="site-url"
           placeholder="https://example.com"
+          required
         />
       </fieldset>
       <fieldset className="space-y-1">
