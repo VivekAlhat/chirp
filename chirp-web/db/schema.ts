@@ -1,7 +1,10 @@
-import { pgTable, serial, text } from "drizzle-orm/pg-core";
+import { sql } from "drizzle-orm";
+import { pgTable, text, uuid } from "drizzle-orm/pg-core";
 
 export const sites = pgTable("sites", {
-  id: serial("id").primaryKey(),
+  id: uuid("id")
+    .default(sql`gen_random_uuid()`)
+    .primaryKey(),
   name: text("name"),
   url: text("url"),
   description: text("description"),
